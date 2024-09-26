@@ -31,7 +31,7 @@ const Main = () => {
             }
         };
         fetchUserData();
-    }, []);
+    });
 
     return (
         <div className="container">
