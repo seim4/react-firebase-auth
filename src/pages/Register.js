@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { auth, db } from "../firebaseConfig";
 
@@ -25,7 +26,8 @@ const Register = () => {
                 birthDate,
                 email,
             });
-            navigate("/login");
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/main");
         } catch (error) {
             console.error("Erro ao cadastrar usuário: ", error);
         }
